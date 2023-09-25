@@ -2,9 +2,11 @@
   <main>
     <p>Hello World</p>
     <button @click="app.onOpenDialog">Open Dialog</button>
+    <button @click="app.onAppendToast">Append Toast</button>
     <AlertComponent
       id="test"
       type="confirm"
+      variant="primary"
       :open="app.isOpenAlert.value"
       @accept="app.onAcceptDialog"
       @deny="app.onDenyDialog"
@@ -16,6 +18,7 @@
 
 <script setup lang="ts">
 import AlertComponent from "@/components/commons/AlertComponent.vue";
+import { randomString } from "@/helpers/str.helper";
 import { Component, defineClassComponent } from "@/plugins/component.plugin";
 
 const app = defineClassComponent(
@@ -36,6 +39,10 @@ const app = defineClassComponent(
 
     public onDenyDialog = () => {
       this.isOpenAlert.value = false;
+    };
+
+    public onAppendToast = () => {
+      this.appendToast({ message: randomString() });
     };
   },
 );

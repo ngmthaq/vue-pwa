@@ -17,12 +17,16 @@ import {
   ref,
   watch,
   watchEffect,
+  nextTick,
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useEventBus } from "./bus.plugin";
+import { appendToast } from "@/helpers/component.helper";
 
 export abstract class Component {
   public readonly route = useRoute();
   public readonly router = useRouter();
+  public readonly eventBus = useEventBus();
 
   public readonly ref = ref;
   public readonly reactive = reactive;
@@ -37,6 +41,8 @@ export abstract class Component {
   public readonly onBeforeUnmount = onBeforeUnmount;
   public readonly onActivated = onActivated;
   public readonly onDeactivated = onDeactivated;
+  public readonly nextTick = nextTick;
+  public readonly appendToast = appendToast;
 
   public readonly changeQueryParams = (queryParams: Record<string, string | number>) => {
     this.router.replace({ name: this.route.name as any, query: queryParams });

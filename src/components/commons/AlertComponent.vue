@@ -6,11 +6,25 @@
         <div class="modal-body text-black">
           <slot></slot>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" v-if="props.type === 'confirm'" @click="app.onAccept">
-            Deny
+        <div class="modal-footer p-1">
+          <button
+            type="button"
+            style="min-width: 64px"
+            class="btn btn-secondary btn-sm"
+            v-if="props.type === 'confirm'"
+            @click="app.onDeny"
+          >
+            Cancel
           </button>
-          <button type="button" class="btn btn-primary btn-sm" @click="app.onDeny">Accept</button>
+          <button
+            type="button"
+            style="min-width: 64px"
+            class="btn btn-sm"
+            :class="app.variant.value"
+            @click="app.onAccept"
+          >
+            OK
+          </button>
         </div>
       </div>
     </div>
@@ -30,6 +44,13 @@ const emits = defineEmits<AlertComponentEmitTypes>();
 const app = defineClassComponent(
   class AlertComponent extends Component {
     public readonly modal: Ref<Modal | null> = this.ref(null);
+
+    public variant = this.computed(() => {
+      if (!props.variant) return "btn-primary";
+      if (props.variant === "primary") return "btn-primary";
+      if (props.variant === "success") return "btn-success";
+      if (props.variant === "error") return "btn-danger";
+    });
 
     public constructor() {
       super();
