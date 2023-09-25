@@ -19,6 +19,7 @@ const privateRoutes = Object.values(PATH_CONSTANTS.privateRoutes).map((route) =>
 
 const notFoundRoute: RouteRecordRaw = {
   path: "/:pathMatch(.*)*",
+  name: "pathNotFound",
   component: PathNotFoundTemplate,
   meta: { title: "title.notFound", accessType: "public" },
 };
