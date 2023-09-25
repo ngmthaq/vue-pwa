@@ -18,8 +18,12 @@ import {
   watch,
   watchEffect,
 } from "vue";
+import { useRoute, useRouter } from "vue-router";
 
 export abstract class Component {
+  public readonly route = useRoute();
+  public readonly router = useRouter();
+
   public readonly ref = ref;
   public readonly reactive = reactive;
   public readonly computed = computed;
@@ -33,6 +37,10 @@ export abstract class Component {
   public readonly onBeforeUnmount = onBeforeUnmount;
   public readonly onActivated = onActivated;
   public readonly onDeactivated = onDeactivated;
+
+  public readonly changeQueryParams = (queryParams: Record<string, string | number>) => {
+    this.router.replace({ name: this.route.name as any, query: queryParams });
+  };
 }
 
 export function defineClassComponent<C extends Component>(Component: new () => C) {
