@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
     document.title = "";
   }
 
-  next();
+  return next();
 });
 
 export { router };
