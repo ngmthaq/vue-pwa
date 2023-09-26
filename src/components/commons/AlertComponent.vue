@@ -1,5 +1,5 @@
 <template>
-  <!-- Modal -->
+  <!-- Alert Component -->
   <div :id="app.id" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -37,7 +37,7 @@ import type { AlertComponentType } from "./AlertComponent";
 import { Modal } from "bootstrap";
 import { Component, defineClassComponent } from "@/plugins/component.plugin";
 import { randomString } from "@/helpers/str.helper";
-import { APP_CONSTANTS } from "@/constants/app.const";
+import { APP_CONSTANTS } from "@/constants/app.constant";
 
 const app = defineClassComponent(
   class AlertComponent extends Component {

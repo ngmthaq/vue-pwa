@@ -1,4 +1,5 @@
 <template>
+  <!-- Toast Component -->
   <div class="toast-container position-fixed bottom-0 end-0">
     <div
       v-for="toast in app.toasts.value"
@@ -22,7 +23,7 @@
 import { Toast } from "bootstrap";
 import { Component, defineClassComponent } from "@/plugins/component.plugin";
 import { randomString } from "@/helpers/str.helper";
-import { APP_CONSTANTS } from "@/constants/app.const";
+import { APP_CONSTANTS } from "@/constants/app.constant";
 import { type Ref } from "vue";
 import type { ToastComponentFullType, ToastComponentType } from "./ToastComponent";
 
