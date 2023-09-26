@@ -4,5 +4,6 @@
 export class APP_CONSTANTS {
   public static eventBus: Record<string, string> = {
     appendToast: "appendToast",
+    executeAlert: "executeAlert",
   };
 }

@@ -22,7 +22,7 @@ export class EventBus {
     }
   }
 
-  public emit<T>(eventName: string, params: T) {
+  public emit<T>(eventName: string, params?: T) {
     if (this.events.value[eventName]) {
       this.events.value[eventName].forEach((callback) => {
         callback(params);

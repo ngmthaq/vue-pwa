@@ -1,17 +1,17 @@
 <template>
   <!-- Modal -->
-  <div :id="props.id" class="modal fade" tabindex="-1">
+  <div :id="app.id" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body text-black">
-          <slot></slot>
+          {{ app.props.value.message }}
         </div>
         <div class="modal-footer p-1">
           <button
             type="button"
             style="min-width: 64px"
             class="btn btn-secondary btn-sm"
-            v-if="props.type === 'confirm'"
+            v-if="app.props.value.type === 'confirm'"
             @click="app.onDeny"
           >
             Cancel
@@ -32,51 +32,62 @@
 </template>
 
 <script setup lang="ts">
-import { Component, defineClassComponent } from "@/plugins/component.plugin";
-import { Modal } from "bootstrap";
 import type { Ref } from "vue";
-import type { AlertComponentPropTypes, AlertComponentEmitTypes } from "./AlertComponent";
-
-const props = defineProps<AlertComponentPropTypes>();
-
-const emits = defineEmits<AlertComponentEmitTypes>();
+import type { AlertComponentType } from "./AlertComponent";
+import { Modal } from "bootstrap";
+import { Component, defineClassComponent } from "@/plugins/component.plugin";
+import { randomString } from "@/helpers/str.helper";
+import { APP_CONSTANTS } from "@/constants/app.const";
 
 const app = defineClassComponent(
   class AlertComponent extends Component {
     public readonly modal: Ref<Modal | null> = this.ref(null);
 
+    public readonly id = Date.now() + "_" + randomString();
+
+    public props: Ref<AlertComponentType> = this.ref({
+      type: "alert",
+      variant: "primary",
+      message: "",
+    });
+
     public variant = this.computed(() => {
-      if (!props.variant) return "btn-primary";
-      if (props.variant === "primary") return "btn-primary";
-      if (props.variant === "success") return "btn-success";
-      if (props.variant === "error") return "btn-danger";
+      if (!this.props.value.variant) return "btn-primary";
+      if (this.props.value.variant === "primary") return "btn-primary";
+      if (this.props.value.variant === "success") return "btn-success";
+      if (this.props.value.variant === "error") return "btn-danger";
     });
 
     public constructor() {
       super();
 
-      this.onMounted(() => {
-        this.modal.value = new Modal("#" + props.id, { keyboard: false, backdrop: "static" });
-        if (props.open) this.modal.value.show();
+      this.eventBus.on(APP_CONSTANTS.eventBus.executeAlert, (params: AlertComponentType) => {
+        this.props.value = params;
+        this.modal.value?.show();
       });
 
-      this.watch(
-        () => props.open,
-        (isOpen) => {
-          if (this.modal.value) {
-            if (isOpen) this.modal.value.show();
-            else this.modal.value.hide();
-          }
-        },
-      );
+      this.onMounted(() => {
+        this.modal.value = new Modal("#" + this.id, { keyboard: false, backdrop: "static" });
+        this.modal.value?.hide();
+      });
     }
 
-    public onAccept = () => {
-      emits("accept");
+    public onAccept = async () => {
+      if (this.props.value.onAccept) {
+        await this.props.value.onAccept();
+        this.modal.value?.hide();
+      } else {
+        this.modal.value?.hide();
+      }
     };
 
-    public onDeny = () => {
-      emits("deny");
+    public onDeny = async () => {
+      if (this.props.value.onDeny) {
+        await this.props.value.onDeny();
+        this.modal.value?.hide();
+      } else {
+        this.modal.value?.hide();
+      }
     };
   },
 );

@@ -21,7 +21,7 @@ import {
 } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useEventBus } from "./bus.plugin";
-import { appendToast } from "@/helpers/component.helper";
+import { appendToast, openAlert } from "@/helpers/component.helper";
 
 export abstract class Component {
   public readonly route = useRoute();
@@ -43,6 +43,7 @@ export abstract class Component {
   public readonly onDeactivated = onDeactivated;
   public readonly nextTick = nextTick;
   public readonly appendToast = appendToast;
+  public readonly openAlert = openAlert;
 
   public readonly changeQueryParams = (queryParams: Record<string, string | number>) => {
     this.router.replace({ name: this.route.name as any, query: queryParams });
