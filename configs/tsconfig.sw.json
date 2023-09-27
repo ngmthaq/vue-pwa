@@ -1,0 +1,16 @@
+{
+  "files": ["../src/serviceWorker.ts"],
+  "exclude": ["../src/**/__tests__/*", "../node_modules/**/*"],
+  "compilerOptions": {
+    "outFile": "../dist/serviceWorker.js",
+    "rootDir": "../",
+    "composite": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "baseUrl": ".",
+    "lib": ["ESNext", "WebWorker"],
+    "paths": {
+      "@/*": ["../src/*"]
+    }
+  }
+}

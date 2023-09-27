@@ -6,8 +6,8 @@
     "dev": "vite --host",
     "build": "yarn lint && yarn type:check && yarn build:web && yarn build:pwa",
     "build:web": "vite build",
-    "build:pwa": "tsc ./src/serviceWorker.ts --outfile ./dist/serviceWorker.js",
-    "preview": "vite preview",
+    "build:pwa": "tsc -p ./configs/tsconfig.sw.json",
+    "preview": "vite preview --host",
     "type:check": "vue-tsc --noEmit -p ./configs/tsconfig.app.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write ."

@@ -6,7 +6,7 @@
     "rootDir": "../",
     "composite": true,
     "baseUrl": ".",
-    "paths": {
+        "paths": {
       "@/*": ["../src/*"]
     }
   }
