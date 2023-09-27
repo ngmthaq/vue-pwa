@@ -1,4 +1,21 @@
 export const registerServiceWorker = async () => {
+  window.addEventListener("beforeinstallprompt", (e) => {
+    console.log("Prepare to show install PWA prompt");
+  });
+
+  window.addEventListener("appinstalled", () => {
+    // Log install to analytics
+    console.log("PWA installed");
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    let displayMode = "browser";
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      displayMode = "standalone";
+    }
+    console.log("Display mode:", displayMode);
+  });
+
   if ("serviceWorker" in navigator && import.meta.env.PROD) {
     try {
       const registration = await navigator.serviceWorker.register("/serviceWorker.js");
@@ -22,21 +39,4 @@ export const registerServiceWorker = async () => {
     const percentageUsed = Math.ceil((quota.usage / quota.quota) * 100);
     console.log(`You've used ${quota.usage}/${quota.quota} bytes (~${percentageUsed}%) of the available storage.`);
   }
-
-  window.addEventListener("beforeinstallprompt", (e) => {
-    console.log("Prepare to show install PWA prompt");
-  });
-
-  window.addEventListener("appinstalled", () => {
-    // Log install to analytics
-    console.log("PWA installed");
-  });
-
-  window.addEventListener("DOMContentLoaded", () => {
-    let displayMode = "browser";
-    if (window.matchMedia("(display-mode: standalone)").matches) {
-      displayMode = "standalone";
-    }
-    console.log("Display mode:", displayMode);
-  });
 };
