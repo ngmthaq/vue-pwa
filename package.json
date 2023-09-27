@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite --host",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "yarn lint && yarn type:check && yarn build:web && yarn build:pwa",
+    "build:web": "vite build",
+    "build:pwa": "tsc ./src/serviceWorker.ts --outfile ./dist/serviceWorker.js",
     "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p ./configs/tsconfig.app.json --composite false",
+    "type:check": "vue-tsc --noEmit -p ./configs/tsconfig.app.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
