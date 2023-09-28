@@ -18,6 +18,7 @@ export const registerServiceWorker = async () => {
       try {
         const registration = await navigator.serviceWorker.register("/serviceWorker.js");
         registration.addEventListener("updatefound", (event) => {
+          console.log("A new version has just been released");
           const newServiceWorker = registration.installing;
           if (newServiceWorker) {
             newServiceWorker.addEventListener("statechange", (event) => {

@@ -1,4 +1,7 @@
-const CURRENT_VERSION: number = 1;
+import * as localforage from "localforage";
+import { APP_CONSTANTS } from "./constants/app.constant";
+
+const CURRENT_VERSION: number = APP_CONSTANTS.pwa.cacheVersion;
 
 const CURRENT_CACHES: Record<string, string> = {
   requests: `cache-requests-v${CURRENT_VERSION}`,
