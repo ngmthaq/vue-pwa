@@ -9,3 +9,12 @@ export function randomString(length: number = 16): string {
   }
   return result;
 }
+
+export function isJsonString(string: any) {
+  try {
+    JSON.parse(string);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
