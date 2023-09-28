@@ -1,4 +1,4 @@
-const CURRENT_VERSION: number = 5;
+const CURRENT_VERSION: number = 1;
 
 const CURRENT_CACHES: Record<string, string> = {
   requests: `cache-requests-v${CURRENT_VERSION}`,
