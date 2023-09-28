@@ -7,8 +7,4 @@ export class APP_CONSTANTS {
     executeAlert: "executeAlert",
     executeLoading: "executeLoading",
   };
-
-  public static pwa = {
-    cacheVersion: 3,
-  };
 }

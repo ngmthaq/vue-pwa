@@ -1,7 +1,8 @@
 import * as localforage from "localforage";
 import { APP_CONSTANTS } from "./constants/app.constant";
+import { version } from "../.version";
 
-const CURRENT_VERSION: number = APP_CONSTANTS.pwa.cacheVersion;
+const CURRENT_VERSION: string = version;
 
 const CURRENT_CACHES: Record<string, string> = {
   requests: `cache-requests-v${CURRENT_VERSION}`,
@@ -46,7 +47,7 @@ self.addEventListener("fetch", (event: any) => {
         const cachedResponse = await cache.match(event.request);
         if (cachedResponse) return cachedResponse.clone();
         const response = await fetch(event.request.clone());
-        if (response.status < 400) {
+        if (response.status < 400 && event.request.method.toUpperCase() === "GET") {
           const isValid: boolean = ALLOWABLE_ORIGINS.some((origin) => {
             return response.url.startsWith(origin);
           });
