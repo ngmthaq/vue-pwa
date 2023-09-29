@@ -6,6 +6,7 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
 import { PATH_CONSTANTS } from "@/constants/path.constant";
 import PathNotFoundTemplate from "@/templates/PathNotFoundTemplate.vue";
+import { i18n } from "./i18n.plugin";
 
 const publicRoutes = Object.values(PATH_CONSTANTS.publicRoutes).map((route) => ({
   ...route,
@@ -31,7 +32,8 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta && to.meta.title) {
-    document.title = to.meta.title as string;
+    const title = to.meta.title as string;
+    document.title = i18n.global.t(title);
   } else {
     document.title = "";
   }

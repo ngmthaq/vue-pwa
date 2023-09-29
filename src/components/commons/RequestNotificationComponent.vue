@@ -19,18 +19,18 @@
               style="width: 64px; height: auto; margin-right: 16px"
             />
             <div>
-              <h4>Get notifications from us</h4>
-              <p class="m-0">We would like to show you notifications for the latest news and updates</p>
+              <h4>{{ app.$t("common.requestNotificationTitle") }}</h4>
+              <p class="m-0">{{ app.$t("common.requestNotificationText") }}</p>
             </div>
           </div>
         </div>
         <div class="modal-footer p-1">
           <div class="d-flex align-items-center justify-content-between gap-2 w-100">
             <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal" @click="app.onDeny">
-              Later
+              {{ app.$t("common.later") }}
             </button>
             <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal" @click="app.onAccept">
-              Allow
+              {{ app.$t("common.allow") }}
             </button>
           </div>
         </div>

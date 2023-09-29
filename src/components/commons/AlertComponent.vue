@@ -14,7 +14,7 @@
             v-if="app.props.value.type === 'confirm'"
             @click="app.onDeny"
           >
-            Cancel
+            {{ app.$t("common.cancel") }}
           </button>
           <button
             type="button"
@@ -23,7 +23,7 @@
             :class="app.variant.value"
             @click="app.onAccept"
           >
-            OK
+            {{ app.$t("common.ok") }}
           </button>
         </div>
       </div>

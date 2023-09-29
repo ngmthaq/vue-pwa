@@ -1,0 +1,17 @@
+{
+  "title": {
+    "home": "Homepage",
+    "notFound": "Page Not Found"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "ok": "OK",
+    "understand": "I understand",
+    "requestCookieText": "We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyze website traffic.",
+    "requestNotificationTitle": "Get notifications from us",
+    "requestNotificationText": "We would like to show you notifications for the latest news and updates",
+    "later": "Later",
+    "accept": "Accept",
+    "allow": "Allow"
+  }
+}

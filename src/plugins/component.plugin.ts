@@ -22,11 +22,14 @@ import {
 import { useRoute, useRouter } from "vue-router";
 import { useEventBus } from "./bus.plugin";
 import { appendToast, openAlert, openLoading } from "@/helpers/component.helper";
+import { useI18n } from "vue-i18n";
 
 export abstract class Component {
   public readonly route = useRoute();
   public readonly router = useRouter();
   public readonly eventBus = useEventBus();
+  public readonly i18n = useI18n();
+  public readonly $t = this.i18n.t;
 
   public readonly ref = ref;
   public readonly reactive = reactive;
@@ -48,6 +51,10 @@ export abstract class Component {
 
   public readonly changeQueryParams = (queryParams: Record<string, string | number>) => {
     this.router.replace({ name: this.route.name as any, query: queryParams });
+  };
+
+  public readonly changeLanguage = (locale: string) => {
+    this.i18n.locale.value = locale;
   };
 }
 

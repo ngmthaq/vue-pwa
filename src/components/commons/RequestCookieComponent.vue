@@ -1,10 +1,7 @@
 <template>
   <div class="request-cookie" v-if="app.isOpen.value">
-    <p>
-      We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to
-      improve user experience and analyze website traffic.
-    </p>
-    <button type="button" class="btn btn-light" @click="app.onClick">I understand</button>
+    <p>{{ app.$t("common.requestCookieText") }}</p>
+    <button type="button" class="btn btn-light" @click="app.onClick">{{ app.$t("common.understand") }}</button>
   </div>
 </template>
 
