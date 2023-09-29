@@ -18,8 +18,8 @@ const app = defineClassComponent(
 
 <style scoped lang="scss">
 main {
-  background-color: $dark;
-  color: $light;
+  background-color: $light;
+  color: $dark;
   width: 100%;
   height: 100vh;
   display: flex;
