@@ -6,5 +6,6 @@ export class APP_CONSTANTS {
     appendToast: "appendToast",
     executeAlert: "executeAlert",
     executeLoading: "executeLoading",
+    executeInternalError: "executeInternalError",
   };
 }

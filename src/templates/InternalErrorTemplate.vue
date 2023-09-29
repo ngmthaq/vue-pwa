@@ -1,8 +1,9 @@
 <template>
   <main>
     <div>
-      <h1>404</h1>
-      <p>{{ app.$t("common.pageNotFound") }}</p>
+      <h1>500</h1>
+      <p>{{ app.$t(app.isDev ? "common.devInternalError" : "common.internalError") }}</p>
+      <small>{{ app.$t(app.isDev ? "common.devModeNotice" : "common.prodModeNotice") }}</small>
     </div>
   </main>
 </template>
@@ -10,7 +11,19 @@
 <script setup lang="ts">
 import { Component, defineClassComponent } from "@/plugins/component.plugin";
 
-const app = defineClassComponent(class PathNotFoundTemplate extends Component {});
+const app = defineClassComponent(
+  class PathNotFoundTemplate extends Component {
+    public readonly isDev = import.meta.env.DEV;
+
+    public constructor() {
+      super();
+
+      this.onBeforeMount(() => {
+        document.title = this.$t("title.internalError");
+      });
+    }
+  },
+);
 </script>
 
 <style scoped lang="scss">
