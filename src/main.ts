@@ -24,4 +24,4 @@ const registerApp = () => {
   app.mount("#app");
 };
 
-registerServiceWorker().then(registerApp);
+registerServiceWorker(true).then(registerApp);
