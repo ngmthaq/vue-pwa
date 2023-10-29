@@ -4,6 +4,12 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 @import url("../../../node_modules/bootstrap-icons/font/bootstrap-icons.scss");
 
+* {
+  font-family: "Source Code Pro", monospace;
+  color: $light;
+}
+
 body {
   overscroll-behavior-y: contain;
+  background-color: $black;
 }

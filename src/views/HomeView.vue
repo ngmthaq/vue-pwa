@@ -1,10 +1,15 @@
 <template>
   <main>
-    <p>Hello World</p>
+    <HeaderComponent />
+    <div class="container-fluid">
+      <BannerComponent />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
+import HeaderComponent from "@/components/header/HeaderComponent.vue";
+import BannerComponent from "@/components/banner/BannerComponent.vue";
 import { Component, defineClassComponent } from "@/plugins/component.plugin";
 
 const app = defineClassComponent(
@@ -18,13 +23,6 @@ const app = defineClassComponent(
 
 <style scoped lang="scss">
 main {
-  background-color: $light;
-  color: $dark;
   width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 </style>
