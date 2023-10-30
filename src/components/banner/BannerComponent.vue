@@ -12,17 +12,17 @@
     </div>
     <div class="slideshow">
       <div class="stack">
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
-        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
+        <p v-for="(hob, index) in app.hobbies.value" :key="index">{{ hob }}</p>
       </div>
     </div>
     <div class="images">
@@ -55,6 +55,22 @@
         <video src="@/assets/videos/video1.mp4" muted autoplay loop></video>
       </div>
     </div>
+    <div class="fixed-image" id="resume">My Resume</div>
+    <div class="slideshow">
+      <div class="stack">
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+        <p v-for="(tech, index) in app.techStacks.value" :key="index">{{ tech }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,7 +80,7 @@ import { Component, defineClassComponent } from "@/plugins/component.plugin";
 
 const app = defineClassComponent(
   class BannerComponent extends Component {
-    public techStacks: Ref<string[]> = this.ref([
+    public hobbies: Ref<string[]> = this.ref([
       "Nguyen Manh Thang",
       "Developer",
       "Programming",
@@ -86,6 +102,47 @@ const app = defineClassComponent(
       "History",
       "World war I & II",
       "Coffee",
+    ]);
+
+    public techStacks: Ref<string[]> = this.ref([
+      "HTML",
+      "CSS",
+      "Javascript",
+      "jQuery",
+      "Typescript",
+      "Bootstrap",
+      "Material UI",
+      "Vuetify",
+      "React.js",
+      "Next.js",
+      "Electron.js",
+      "Vue.js",
+      "Nuxt.js",
+      "Node.js",
+      "PHP",
+      "Laravel",
+      "Smarty",
+      "Blade",
+      "SQL Server",
+      "MySQL",
+      "SQLite",
+      "JSON",
+      "Docker",
+      "Docker Compose",
+      "Linux",
+      "Ubuntu",
+      "Debian",
+      "Git",
+      "Github",
+      "Github Actions",
+      "Gitlab",
+      "Bitbucket",
+      "Jira",
+      "Backlog",
+      "Redmine",
+      "Website",
+      "Desktop Application",
+      "PWA",
     ]);
   },
 );
@@ -203,6 +260,23 @@ const app = defineClassComponent(
       }
     }
   }
+}
+
+.fixed-image {
+  background-image: linear-gradient(to bottom, rgba(#000, 0.7), rgba(#000, 0.7)), url("@/assets/images/img20.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 400px;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
 @keyframes moveSlideshow {

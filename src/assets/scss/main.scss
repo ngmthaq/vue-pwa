@@ -10,6 +10,7 @@
 }
 
 body {
-  overscroll-behavior-y: contain;
   background-color: $black;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
 }
